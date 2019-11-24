@@ -2,6 +2,7 @@ package com.example.topic4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String country = parent.getItemAtPosition(position).toString();
                 String capital = dictionary.get(country);
-                Toast.makeText(getApplicationContext(), capital.toString(), Toast.LENGTH_LONG).show();
+
+                Intent intent=new Intent(MainActivity.this,ActivityResult.class);
+                intent.putExtra("Capital",capital);
+                startActivity(intent);
+             //   Toast.makeText(getApplicationContext(), capital.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
